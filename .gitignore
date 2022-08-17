@@ -1,0 +1,10 @@
+
+*.stash
+*.user
+*.o
+*.exe
+*.Release
+*.Debug
+Makefile
+moc_*.h
+ui_*.h
