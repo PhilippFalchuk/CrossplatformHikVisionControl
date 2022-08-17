@@ -14,6 +14,13 @@ win32{
     INCLUDEPATH += $$PWD/includeWin
 }
 
+linux{
+    LIBS += -L&&PWD/libLin/ -lhcnetsdk -lPlayCtrl -lAudioRender -lSuperRender
+
+    INCLUDEPATH += &&PWD/includeLin
+}
+
+
 
 
 CONFIG += c++11
