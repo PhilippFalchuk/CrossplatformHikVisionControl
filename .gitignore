@@ -9,3 +9,4 @@ Makefile
 moc_*.h
 ui_*.h
 moc_*.cpp
+release/moc_mainwindow.cpp
