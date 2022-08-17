@@ -8,3 +8,4 @@
 Makefile
 moc_*.h
 ui_*.h
+moc_*.cpp
