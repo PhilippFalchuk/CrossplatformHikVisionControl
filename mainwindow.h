@@ -3,9 +3,19 @@
 
 #include <QMainWindow>
 #include <QDebug>
-#include <windows.h>
+
+#ifdef Q_OS_WIN32
+//#include <windows.h>
+//#include <plaympeg4.h>
+#endif
+
+#ifdef Q_OS_LINUX
+#include <PlayM4.h>
+#endif
+
 #include <HCNetSDK.h>
-#include <plaympeg4.h>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

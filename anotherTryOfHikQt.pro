@@ -14,10 +14,12 @@ win32{
     INCLUDEPATH += $$PWD/includeWin
 }
 
-linux{
-    LIBS += -L&&PWD/libLin/ -lhcnetsdk -lPlayCtrl -lAudioRender -lSuperRender
+unix{
+    #LIBS += -L$$PWD/libLin -lhcnetsdk -lPlayCtrl -lAudioRender -lSuperRender -lHCCore
+LIBS += -LlibLin -Wl,-rpath=./:./HCNetSDKCom:/libLin -lhcnetsdk -lPlayCtrl -lAudioRender -lSuperRender
 
-    INCLUDEPATH += &&PWD/includeLin
+
+    INCLUDEPATH += $$PWD/includeLin
 }
 
 
@@ -43,3 +45,8 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+#unix:!macx: LIBS += -L$$PWD/libLin/ -lHCCore
+
+INCLUDEPATH += $$PWD/includeLin
+DEPENDPATH += $$PWD/includeLin

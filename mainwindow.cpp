@@ -19,7 +19,7 @@ void MainWindow::on_pushButton_clicked()
     bool isok = NET_DVR_Init();
     if(isok)
     {
-        qDebug () << "Инициализация SDK прошла успешно";
+        qDebug () << "SDK initialization succsesful";
                  // Устанавливаем время подключения и время переподключения
         NET_DVR_SetConnectTime(2000, 1);
         NET_DVR_SetReconnect(10000, true);
@@ -27,11 +27,11 @@ void MainWindow::on_pushButton_clicked()
         int lUserID = NET_DVR_Login_V30(const_cast<char*>("192.168.0.228"), 8000, const_cast<char*>("admin"), const_cast<char*>("indicom2017"), &struDeviceInfo);
         if (lUserID < 0)
         {
-                         qDebug () << "Ошибка входа:" << NET_DVR_GetLastError ();
+                         qDebug () << "login error:" << NET_DVR_GetLastError ();
                          NET_DVR_Cleanup (); // Освободить ресурсы SDK
             return;
         }else{
-                         qDebug () << "Войти успешно";
+                         qDebug () << "login succsess";
                          HWND hWnd = (HWND) ui->graphicsView->winId (); // Получить дескриптор окна
             NET_DVR_PREVIEWINFO struPlayInfo;
                          struPlayInfo.hPlayWnd = hWnd; // Дескриптор должен быть установлен на допустимое значение, когда SDK декодируется, и его можно установить в null, когда поток только извлекается, но не декодируется
@@ -43,7 +43,7 @@ void MainWindow::on_pushButton_clicked()
 
             if (lRealPlayHandle < 0)
             {
-                                 qDebug () << "Ошибка предварительного просмотра:" << NET_DVR_GetLastError ();
+                                 qDebug () << "preview error:" << NET_DVR_GetLastError ();
                 NET_DVR_Logout(lUserID);
                 NET_DVR_Cleanup();
                 return;
